@@ -1,0 +1,32 @@
+<label for="name">
+    Name
+    <input id="name" type="text" [(ngModel)]="person.name" />
+</label>
+<p>{{person.name}}</p>
+<label for="description">
+    Commission Description
+    <input id="description" type="text" [(ngModel)]="person.commision" />
+</label>
+
+<p>{{person.commision}}</p>
+
+<app-child-address-input (addressAdded)="addAddress($event)"/>
+
+@for(address of person.addresses; track $index){
+    <p>{{address}}</p>
+}
+
+<app-child-city-input (cityAdded)="addCity($event)" />
+
+@for(city of person.cities; track $index){
+    <p>{{city}}</p>
+}
+
+<app-child-country-input (countryAdded)="addCountry($event)"/>
+
+@for(country of person.countries; track $index){
+    <p>{{country}}</p>
+}
+
+<button (click)="postData()">Test Post Data</button>
+
